@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stuart Gillmer | ServiceNow Solution Consultant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #151a2b;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.08);
+      --text: #f7fafc;
+      --muted: #a0aec0;
+      --border: #2d3748;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.45);
+      --radius-xl: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1a202c, #050711 55%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto 64px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 4px 12px;
+      background: rgba(26, 32, 44, 0.9);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #48bb78;
+      box-shadow: 0 0 10px rgba(72, 187, 120, 0.8);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 24px;
+      margin-bottom: 32px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(26,32,44,0.98), rgba(17,24,39,0.98));
+      border-radius: 24px;
+      padding: 24px 26px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(79, 209, 197, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at top left, rgba(79, 209, 197, 0.11), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(66, 153, 225, 0.08), transparent 52%);
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 12px 0 4px;
+    }
+
+    .role {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 640px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-main p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .hero-highlight {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-highlight strong {
+      color: var(--text);
+    }
+
+    .hero-meta {
+      border-radius: 18px;
+      padding: 12px 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(79, 209, 197, 0.22);
+      font-size: 12px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      gap: 8px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+    }
+
+    .meta-value {
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .meta-badge {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: rgba(45, 212, 191, 0.07);
+      border: 1px solid rgba(45, 212, 191, 0.4);
+      color: var(--accent);
+    }
+
+    .side-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 24px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .side-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .metric {
+      border-radius: 14px;
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .metric-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .metric-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px dashed rgba(75, 85, 99, 0.9);
+      padding-top: 8px;
+      margin-top: 6px;
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 26px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .card-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border);
+      padding: 16px 18px 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: rgba(30, 64, 175, 0.35);
+      border: 1px solid rgba(129, 140, 248, 0.65);
+      color: #e0e7ff;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .timeline-label {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .deal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .deal-table th,
+    .deal-table td {
+      padding: 6px 4px;
+      text-align: left;
+      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .deal-table th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .pill-light {
+      display: inline-flex;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--muted);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      border-top: 1px dashed rgba(75, 85, 99, 0.9);
+      padding-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- TOP PILL -->
+    <div class="pill">
+      <span class="pill-dot"></span>
+      Ready for SC IC2 – Internal Promotion Profile
+    </div>
+
+    <!-- HEADER / HERO -->
+    <header>
+      <div class="hero">
+        <div class="hero-inner">
+          <h1>Stuart Gillmer</h1>
+          <div class="role">Associate Solution Consultant (IC1) · Mid-Market · EMEA North &amp; South</div>
+
+          <div class="hero-grid">
+            <div class="hero-main">
+              <p>
+                Based in Dublin and currently supporting Africa, Nordics (Finland &amp; Denmark) and Iberia, 
+                I’ve grown from SDR to SC by combining strong prospecting, story-led demos and a genuine focus on helping AEs win.
+              </p>
+
+              <div class="hero-highlight">
+                G’day Craig, Hallo Dieter, Bonjour Isabelle —<br />
+                <br />
+                I’d love to formally express my interest in progressing to the <strong>SC IC2 role</strong>. 
+                2025 has been about building trust as an SC: stepping up on deals when AEs are on PTO, 
+                supporting newer teammates, and bringing clarity and confidence to customers in every cycle.
+              </div>
+            </div>
+
+            <aside class="hero-meta">
+              <div class="meta-row">
+                <span class="meta-label">At ServiceNow</span>
+                <span class="meta-value">Since Oct 2022</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">SC Role</span>
+                <span class="meta-value">Since Jan 2025</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Primary Regions</span>
+                <span class="meta-value">Africa · Nordics · Iberia</span>
+              </div>
+              <div class="meta-badges">
+                <span class="meta-badge">Platform Pitch – Top 25 Global</span>
+                <span class="meta-badge">Trusted Advisor – Q3 2025</span>
+                <span class="meta-badge">Rookie SC – Q1 EMEA</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div class="side-title">2025 Snapshot</div>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Closed NNACV</div>
+            <div class="metric-value">$302,172</div>
+            <div class="metric-sub">To-date</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Closed RACV</div>
+            <div class="metric-value">$485,185</div>
+            <div class="metric-sub">To-date</div>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Key Wins</div>
+            <div class="metric-value">KPMG · GGL · Comsol · Toyota</div>
+            <div class="metric-sub">Multi-workflow exposure</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Certifications</div>
+            <div class="metric-value">4x CIS + CSA</div>
+            <div class="metric-sub">Completed in 2025</div>
+          </div>
+        </div>
+
+        <p class="tagline">
+          2025 was also a big year personally — welcoming our first child — while continuing to lean in fully as an SC and 
+          building a foundation for the next level of impact in 2026.
+        </p>
+      </aside>
+    </header>
+
+    <!-- CERTIFICATIONS & LEARNING -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Certifications & Learning</h2>
+        <p class="section-subtitle">Building deep product credibility and sharing that journey with the team.</p>
+      </div>
+
+      <div class="card-row">
+        <article class="card">
+          <h3>ServiceNow Certifications (2025)</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div>
+                <div class="timeline-label">Certified System Administrator (CSA)</div>
+                <div>Achieved 6 January</div>
+              </div>
+              <div class="timeline-meta">Foundation</div>
+            </div>
+            <div class="timeline-item">
+              <div>
+                <div class="timeline-label">CIS – Customer Service Management (CIS-CSM)</div>
+                <div>Achieved 16 April</div>
+              </div>
+              <div class="timeline-meta">CSM Focus</div>
+            </div>
+            <div class="timeline-item">
+              <div>
+                <div class="timeline-label">CIS – Hardware Asset Management (CIS-HAM)</div>
+                <div>Achieved 8 May</div>
+              </div>
+              <div class="timeline-meta">HAM</div>
+            </div>
+            <div class="timeline-item">
+              <div>
+                <div class="timeline-label">CIS – Software Asset Management (CIS-SAM)</div>
+                <div>Achieved 26 September</div>
+              </div>
+              <div class="timeline-meta">SAM</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Scaling my learning to others</h3>
+          <p>
+            Beyond completing the certifications, I presented my learning journey to the wider EMEA SC team — 
+            breaking down how to sequence Now Learning courses and manage study time to accelerate certification progress.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Now Learning navigation</span>
+            <span class="chip">Study sequencing</span>
+            <span class="chip">Peer enablement</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DEAL HIGHLIGHTS -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Deal Highlights</h2>
+        <p class="section-subtitle">Examples of where I’ve contributed as a trusted SC in the cycle.</p>
+      </div>
+
+      <div class="card-row">
+        <article class="card">
+          <h3>Key Opportunities (2025)</h3>
+          <table class="deal-table">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>OPTY</th>
+                <th>Stage</th>
+                <th>Value (k)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>KPMG (HR)</td>
+                <td>OPTY5241216</td>
+                <td><span class="pill-light">Closed Q1</span></td>
+                <td>24,552</td>
+              </tr>
+              <tr>
+                <td>GGL</td>
+                <td>OPTY5212392</td>
+                <td><span class="pill-light">Closed Q2</span></td>
+                <td>100,155</td>
+              </tr>
+              <tr>
+                <td>Comsol</td>
+                <td>OPTY1996474</td>
+                <td><span class="pill-light">Closed Q3</span></td>
+                <td>88,260</td>
+              </tr>
+              <tr>
+                <td>Comsol (TSM Pro upsell)</td>
+                <td>OPTY5263294</td>
+                <td><span class="pill-light">Progressing Q4</span></td>
+                <td>40,800</td>
+              </tr>
+              <tr>
+                <td>Toyota</td>
+                <td>OPTY1968791</td>
+                <td><span class="pill-light">Closed Q3</span></td>
+                <td>11,133</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px; font-size:11px; color:var(--muted);">
+            Roles have included discovery, demo design and delivery, aligning the right workflows, and keeping momentum when AEs were unavailable.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>How I show up in deals</h3>
+          <ul class="bullet-list">
+            <li>Step in for AEs on PTO to progress pricing, partner alignment and next steps rather than letting cycles stall.</li>
+            <li>Bring IRM, SecOps and CSM specialists into key accounts (e.g. Finavia) to raise deal quality and win probability.</li>
+            <li>Use my SDR background to keep pipeline healthy: supporting outbound into new logos and whitespace territories.</li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Trusted pre-sales partner</span>
+            <span class="chip">Multi-workflow exposure</span>
+            <span class="chip">PTO coverage</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RECOGNITION & IMPACT -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Recognition & Impact</h2>
+        <p class="section-subtitle">Evidence that the team sees me as a trusted advisor, not just a “demo resource”.</p>
+      </div>
+
+      <div class="card-row">
+        <article class="card">
+          <h3>Awards & Peer Recognition</h3>
+          <ul class="bullet-list">
+            <li><strong>Rookie SC of Q1 (EMEA)</strong> – recognition for ramping quickly and contributing early.</li>
+            <li><strong>Most Trusted Advisor Q3 2025</strong> – feedback from field on reliability and value in the sales cycle.</li>
+            <li><strong>Global platform pitch competitions</strong> – including a top-25 global ranking against senior AEs &amp; SCs.</li>
+            <li>Presented a competitive analysis on ITSM/CSM to the EMEA SC team.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Community & Culture</h3>
+          <ul class="bullet-list">
+            <li>Re-established the <strong>Mid-Market Teams chat</strong>, which is now actively used across hubs.</li>
+            <li>Regularly share discovery tips, demo stories and SDR–AE alignment frameworks with the team.</li>
+            <li>Help newer SCs and SDRs understand what “good” looks like when partnering with AEs.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- COLLABORATION & MENTORING -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Collaboration & Mentoring</h2>
+        <p class="section-subtitle">Scaling my SDR experience and SC learnings to help others win.</p>
+      </div>
+
+      <div class="card-row">
+        <article class="card">
+          <h3>Partnering with AEs</h3>
+          <p>
+            In 2025 I expanded into <strong>Finland</strong> and later <strong>Iberia</strong>, in addition to Africa, 
+            collaborating closely with AEs like Katja and Laura.
+          </p>
+          <ul class="bullet-list" style="margin-top:8px;">
+            <li>Explained structured prospecting steps, based on my SDR background, to help AEs and SDRs coordinate better.</li>
+            <li>Identified <strong>Finavia</strong> as a top account for the Top Opportunity program and pulled in Dublin IRM &amp; SecOps expertise.</li>
+            <li>Support outreach to C-level personas to open doors, particularly in new territories.</li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">Territory expansion</span>
+            <span class="chip">C-suite prospecting</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Coaching SDRs</h3>
+          <p>
+            Coming from the SDR side, I’ve made it a priority to help inbound and outbound SDRs be successful and aligned with their AEs.
+          </p>
+          <ul class="bullet-list" style="margin-top:8px;">
+            <li>Created a Teams group to improve AE–SDR alignment at the start of the year.</li>
+            <li>Coached SDRs like <strong>Oskari</strong>, <strong>Ingrid</strong> and <strong>AMR</strong> on:
+              territory research, outreach angles, and how to position value in early-stage conversations.</li>
+            <li>Share practical examples from real opps (KPMG, GGL, Comsol) to connect theory to outcomes.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY IC2 -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">Why IC2, and Why Now</h2>
+        <p class="section-subtitle">How I see the next step in my contribution.</p>
+      </div>
+
+      <article class="card">
+        <h3>Ready to deliver at the next level</h3>
+        <ul class="bullet-list">
+          <li>I understand the rhythm of the role – from territory planning and discovery through to execution and post-demo follow-up.</li>
+          <li>I’ve shown that I can be trusted to independently progress deals, manage stakeholders and keep partners aligned.</li>
+          <li>I’ve invested heavily in product depth (4x CIS + CSA) so I can credibly cover multiple workflows in mid-market.</li>
+          <li>I’m already operating as a trusted advisor to AEs, SDRs and customers; IC2 would formalise the scope and expectations of the impact I’m making.</li>
+        </ul>
+        <p style="margin-top:8px; font-size:13px; color:var(--muted);">
+          While there’s still plenty to learn and do before the end of Q4, I’m proud of the foundation built in 2025 and 
+          excited to keep growing with the team into 2026 as an <strong>SC IC2</strong>.
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      Dublin, Ireland · Stuart Gillmer · ServiceNow Mid-Market Solution Consultant
+    </footer>
+  </main>
+</body>
+</html>
