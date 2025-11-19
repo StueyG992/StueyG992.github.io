@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuart Gillmer - Solution Consultant Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background: #f6f8fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #586069;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            color: #24292e;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: #f6f8fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+
+        .cert-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .deal-item {
+            background: #f6f8fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #28a745;
+        }
+
+        .deal-item h3 {
+            color: #24292e;
+            margin-bottom: 0.5rem;
+        }
+
+        .deal-value {
+            color: #28a745;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .achievement {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .achievement h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .collab-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .collab-item {
+            background: #f6f8fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .collab-item h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #24292e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stuart Gillmer</h1>
+        <p>Solution Consultant | ServiceNow | Dublin, Ireland</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>About Me</h2>
+            <p>Associate Solution Consultant based in Dublin, currently supporting Africa, Nordics (Finland & Denmark), and Iberia. I joined ServiceNow in October 2022 as an SDR and transitioned to the SC role on January 1st, 2025.</p>
+            <p style="margin-top: 1rem;">Throughout 2025, I've focused on building deep technical expertise, contributing to significant deals, and supporting both customers and internal teams. My background in sales development gives me unique insights into the full sales cycle, and I'm passionate about sharing knowledge and helping teammates grow.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>$302K</h3>
+                <p>NNACV Closed</p>
+            </div>
+            <div class="stat-card">
+                <h3>$485K</h3>
+                <p>RACV Closed</p>
+            </div>
+            <div class="stat-card">
+                <h3>4</h3>
+                <p>Certifications Earned</p>
+            </div>
+            <div class="stat-card">
+                <h3>3</h3>
+                <p>Territories Supported</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎓 Certifications Completed (2025)</h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <strong>January 6</strong>
+                    <p>Certified System Administrator (CSA)</p>
+                </div>
+                <div class="cert-item">
+                    <strong>April 16</strong>
+                    <p>CIS - Customer Service Management (CIS-CSM)</p>
+                </div>
+                <div class="cert-item">
+                    <strong>May 8</strong>
+                    <p>CIS - Hardware Asset Management (CIS-HAM)</p>
+                </div>
+                <div class="cert-item">
+                    <strong>September 26</strong>
+                    <p>CIS - Software Asset Management (CIS-SAM)</p>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-style: italic;">Shared certification journey tips with the wider EMEA SC team, presenting strategies for managing and sequencing ServiceNow University courses.</p>
+        </div>
+
+        <div class="section">
+            <h2>💼 Major Deal Highlights</h2>
+            <div class="deal-item">
+                <h3>Q1 - KMPG HR</h3>
+                <p>OPTY5241216</p>
+                <div class="deal-value">$24,552K Closed</div>
+            </div>
+            <div class="deal-item">
+                <h3>Q2 - GGL</h3>
+                <p>OPTY5212392</p>
+                <div class="deal-value">$100,155K Closed</div>
+            </div>
+            <div class="deal-item">
+                <h3>Q3 - Comsol</h3>
+                <p>OPTY1996474</p>
+                <div class="deal-value">$88,260K Closed</div>
+            </div>
+            <div class="deal-item">
+                <h3>Q3 - Comsol (Additional)</h3>
+                <p>OPTY5263294</p>
+                <div class="deal-value">$40,800K Closed</div>
+                <p style="margin-top: 0.5rem; color: #586069;">TSM Pro upsell progressing in Q4</p>
+            </div>
+            <div class="deal-item">
+                <h3>Q3 - Toyota</h3>
+                <p>OPTY1968791</p>
+                <div class="deal-value">$11,133K Closed</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏆 Achievements & Recognition</h2>
+            <div class="achievement">
+                <h3>Q1 2025 - Rookie SC of Q1 EMEA</h3>
+                <p>Recognized for outstanding performance in first quarter as Solution Consultant</p>
+            </div>
+            <div class="achievement">
+                <h3>Q3 2025 - Most Trusted Advisor</h3>
+                <p>Awarded for building clarity and confidence across customers and internal teams</p>
+            </div>
+            <div style="background: #f6f8fa; padding: 1.5rem; border-radius: 6px; margin-top: 1rem;">
+                <h3 style="color: #24292e; margin-bottom: 1rem;">Additional Contributions</h3>
+                <ul style="list-style-position: inside; color: #586069;">
+                    <li>Presented to EMEA SC team on ServiceNow University CIS certification strategies</li>
+                    <li>Re-established the Mid-Market Teams Chat, now active among peers</li>
+                    <li>Delivered competitor analysis presentation on ITSM/CSM to EMEA SC team</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🤝 Collaboration & Territory Expansion</h2>
+            <p style="margin-bottom: 1.5rem;">Expanded coverage in June 2025 to include Finnish territory alongside African territory, with Iberia added in late Q3.</p>
+            
+            <div class="collab-grid">
+                <div class="collab-item">
+                    <h3>AE Partnership - Finland (Katja)</h3>
+                    <p>Provided prospecting guidance leveraging SDR experience, identified top account (Finavia) for top opportunity program, coordinated Dublin team resources for IRM & SecOps demo to CISO.</p>
+                    <span class="tag">Prospecting</span>
+                    <span class="tag">Strategic Accounts</span>
+                    <span class="tag">Team Coordination</span>
+                </div>
+                
+                <div class="collab-item">
+                    <h3>AE Partnership - Additional Territory (Laura)</h3>
+                    <p>Applied same collaborative approach with prospecting support and deal progression strategies.</p>
+                    <span class="tag">Deal Support</span>
+                    <span class="tag">Best Practices</span>
+                </div>
+
+                <div class="collab-item">
+                    <h3>Coverage & Continuity</h3>
+                    <p>Stepped in during AE absences to maintain momentum - managed pricing quotes with partners and AE Manager, introduced partners post-discovery to ensure consistent deal flow.</p>
+                    <span class="tag">Deal Continuity</span>
+                    <span class="tag">Partner Management</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📈 Prospecting & Sales Support</h2>
+            <div style="background: #f6f8fa; padding: 1.5rem; border-radius: 6px; margin-bottom: 1rem;">
+                <h3 style="color: #24292e; margin-bottom: 0.5rem;">Executive Outreach</h3>
+                <p>Engaged with CEO-level personas to open doors and initiate strategic conversations for Account Executives.</p>
+            </div>
+            <div style="background: #f6f8fa; padding: 1.5rem; border-radius: 6px;">
+                <h3 style="color: #24292e; margin-bottom: 0.5rem;">Operational Support</h3>
+                <p>Managed quote generation and partner introductions during AE PTO to maintain deal momentum and customer engagement.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎓 Mentoring & Knowledge Sharing</h2>
+            <div style="background: #f6f8fa; padding: 1.5rem; border-radius: 6px; margin-bottom: 1rem;">
+                <h3 style="color: #24292e; margin-bottom: 0.5rem;">SDR Coaching Program</h3>
+                <p>Established Teams group for inbound SDRs to ensure AE alignment. Provided territory insights, prospecting best practices, and coaching on effective AE collaboration.</p>
+                <p style="margin-top: 1rem;"><strong>SDRs Supported:</strong> Oskari, Ingrid, AMR</p>
+            </div>
+            <div style="background: #f6f8fa; padding: 1.5rem; border-radius: 6px;">
+                <h3 style="color: #24292e; margin-bottom: 0.5rem;">Competitive Intelligence</h3>
+                <p>Shared competitive analysis presentations on tools like Zendesk and Jira to help team understand competitive landscape and positioning strategies.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Career Objective</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">I am formally expressing my interest in progressing to the <strong>SC IC2 role</strong>. This year has reinforced my understanding of what it means to be a trusted Solution Consultant - not just delivering demos and discovery calls, but building clarity and confidence throughout the sales cycle for both customers and internal teams. I'm proud of the foundation I've built in 2025 and look forward to continuing this growth trajectory in 2026.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Stuart Gillmer | Dublin, Ireland</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">ServiceNow Solution Consultant Portfolio</p>
+    </footer>
+</body>
+</html>
